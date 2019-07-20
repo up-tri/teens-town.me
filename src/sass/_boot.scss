@@ -1,0 +1,380 @@
+// ////////////////////
+// Roboot.css by Bootstrap
+// ////////////////////
+@import 'bootstrap-reboot';
+
+// ////////////////////
+// Variables
+// ////////////////////
+@import 'vars';
+
+// ////////////////////
+// Breakpoints
+// ////////////////////
+$breakpoint-sm: 400px !default;
+$breakpoint-md: 768px !default;
+$breakpoint-lg: 1000px !default;
+
+$breakpoints: ('sm': 'screen and (max-width: 400px)',
+  'md': 'screen and (max-width: 768px)',
+  'lg': 'screen and (max-width: 1000px)',
+  'xl': 'screen and (max-width: 1200px)',
+) !default;
+
+// ////////////////////
+// Media Query
+// ////////////////////
+@mixin mq($breakpoint: md) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+// ////////////////////
+// Root style
+// ////////////////////
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 16px;
+  line-height: 1.2em;
+  color: $text-base;
+  letter-spacing: trim-start allow-end trim-adjacent ideograph-alpha ideograph-numeric;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+// ////////////////////
+// Typography & Text decorate
+// ////////////////////
+.h1 {
+  font-size: 2rem;
+  margin: 0.67em 0;
+}
+
+.h2 {
+  font-size: 1.5rem;
+}
+
+.h3 {
+  font-size: 1.17rem;
+}
+
+.h4 {
+  font-size: 1rem;
+}
+
+.h5 {
+  font-size: 0.83rem;
+}
+
+.h6 {
+  font-size: 0.67rem;
+}
+
+p {
+  line-height: 1.5;
+}
+
+// .color-primary {
+//     color: $primary;
+//     font-size: inherit;
+//     font-weight: inherit;
+// }
+
+// .color-secondary {
+//     color: $secondary;
+//     font-size: inherit;
+//     font-weight: inherit;
+// }
+
+// .color-accent {
+//     color: $accent;
+//     font-size: inherit;
+//     font-weight: inherit;
+// }
+
+.text-large {
+  font-size: 1.5em;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.line-centering {
+  text-align: center;
+}
+
+// ////////////////////
+// Image style
+// ////////////////////
+img {
+  display: block;
+  border: none;
+  max-width: 100%;
+  height: auto;
+
+  &.inline-image {
+    padding: 0 4px;
+    display: inline-block;
+    // height: 1rem;
+  }
+}
+
+// ////////////////////
+// base classes
+// ////////////////////
+@mixin a-reset {
+  color: inherit;
+
+  &:hover,
+  &:focus {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+@mixin ul-reset {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.transition {
+  transition-duration: $default-duration;
+  transition-timing-function: ease-in-out;
+
+  &-quick {
+    transition-duration: $short-duration;
+  }
+
+  &-slow {
+    transition-duration: $long-duration;
+  }
+}
+
+// display: flex
+// ---------------------------------------- //
+@mixin flex {
+  display: flex;
+  display: -ms-flex;
+  display: -webkit-flex;
+}
+
+// flex-direction
+// - row  : row
+// - rowR : row-reverse
+// - col  : column
+// - colR : column-reverse
+@mixin flexDirection($value: row) {
+  @if $value==rowR {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+  }
+
+  @else if $value==col {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  @else if $value==colR {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+  }
+
+  @else {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+// flex-wrap（基本：nowrap）
+// - wrap
+@mixin flexWrap($value: nowrap) {
+  @if $value==wrap {
+    flex-wrap: $value;
+    -ms-flex-wrap: $value;
+    -webkit-flex-wrap: $value;
+  }
+
+  @else {
+    flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    -webkit-flex-wrap: nowrap;
+  }
+}
+
+// justify-content（基本：start）
+// - sb : space-between
+// - sa : space-around
+// - center
+@mixin justifyContent($value: start) {
+  @if $value==sb {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+
+  @else if $value==sa {
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+  }
+
+  @else if $value==center {
+    justify-content: center;
+    -ms-justify-content: center;
+    -webkit-justify-content: center;
+  }
+
+  @else {
+    justify-content: start;
+    -ms-justify-content: start;
+    -webkit-justify-content: start;
+  }
+}
+
+// align-items（基本：stretch）
+// - start
+// - end
+// - center
+// - baseline
+@mixin alignItems($value: stretch) {
+  @if $value==start {
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+  }
+
+  @else if $value==end {
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+  }
+
+  @else if $value==center {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  @else if $value==baseline {
+    -webkit-box-align: baseline;
+    -ms-flex-align: baseline;
+    align-items: baseline;
+  }
+
+  @else {
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+  }
+}
+
+// align-content（基本：stretch）
+// - start
+// - end
+// - center
+// - sb : space-between
+// - sa : space-around
+@mixin alignContent($value: stretch) {
+  @if $value==start {
+    -ms-flex-line-pack: start;
+    align-content: flex-start;
+  }
+
+  @else if $value==end {
+    -ms-flex-line-pack: end;
+    align-content: flex-end;
+  }
+
+  @else if $value==center {
+    -ms-flex-line-pack: center;
+    align-content: center;
+  }
+
+  @else if $value==sb {
+    -ms-flex-line-pack: justify;
+    align-content: space-between;
+  }
+
+  @else if $value==sa {
+    -ms-flex-line-pack: distribute;
+    align-content: space-around;
+  }
+
+  @else {
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+  }
+}
+
+// order（数値）
+@mixin order($value) {
+  -webkit-box-ordinal-group: $value;
+  -ms-flex-order: $value;
+  order: $value;
+}
+
+// flex-basis（数値）
+@mixin flexBasis($value: auto) {
+  -ms-flex-preferred-size: $value;
+  flex-basis: $value;
+}
+
+// flex-grow（数値）
+@mixin flexGrow($value) {
+  -webkit-box-flex: $value;
+  -ms-flex-positive: $value;
+  flex-grow: $value;
+}
+
+// align-self（基本：auto）
+// - start
+// - end
+// - baseline
+// - stretch
+@mixin alignSelf($value: stretch) {
+  @if $value==start {
+    -ms-flex-item-align: start;
+    align-self: flex-start;
+  }
+
+  @else if $value==end {
+    -ms-flex-item-align: end;
+    align-self: flex-end;
+  }
+
+  @else if $value==center {
+    -ms-flex-item-align: center;
+    align-self: center;
+  }
+
+  @else if $value==baseline {
+    -ms-flex-item-align: baseline;
+    align-self: baseline;
+  }
+
+  @else if $value==stretch {
+    -ms-flex-item-align: stretch;
+    align-self: stretch;
+  }
+
+  @else {
+    -ms-flex-item-align: auto;
+    align-self: auto;
+  }
+}

@@ -1,0 +1,26 @@
+// ////////////////////
+// Colors
+// ////////////////////
+$primary: #f8b72e;
+$primary-dark-2: darken($primary, 10%);
+$secondary: #2e20d6;
+$secondary-1: lighten($secondary, 15%);
+$secondary-2: lighten($secondary, 30%);
+$secondary-3: lighten($secondary, 45%);
+$accent: #f11569;
+$notice: #ff9b00;
+$light: #fff;
+$text-base: #4e5665;
+$text-base-1: lighten($text-base, 15%);
+$text-base-2: lighten($text-base, 30%);
+$text-base-3: lighten($text-base, 45%);
+// Brand Colors
+$brand-tw: #1da1f2;
+$brand-ig: #c13584;
+
+// ////////////////////
+// Animation durations
+// ////////////////////
+$short-duration: 0.1s;
+$default-duration: 0.2s;
+$long-duration: 0.3s;

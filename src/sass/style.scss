@@ -1,0 +1,627 @@
+/**
+ * stylesheet for "Teens Town Musashino"
+ * Copyright 2019 Teens Town Musashino Executive Committee
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * 
+ * @since 2019.04.01
+ * @author Kohei Seta
+ */
+
+@import 'boot';
+
+// ////////////////////
+// M PLUS 1p by Google Fonts
+// ////////////////////
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+1p:300,400,700');
+
+* {
+  font-family: 'M PLUS 1p', sans-serif;
+}
+
+// ////////////////////
+// Fontawesome Pro
+// ////////////////////
+@import './../fontawesome/css/all.css';
+
+// ////////////////////
+// Noto Serif JP by Google Fonts
+// ////////////////////
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+JP:400');
+
+.serif {
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 400;
+}
+
+// ////////////////////
+// animations
+// ////////////////////
+
+@keyframes fluffy {
+  0% {
+    transform: translateY(0);
+  }
+
+  5% {
+    transform: translateY(0);
+  }
+
+  10% {
+    transform: translateY(0);
+  }
+
+  20% {
+    transform: translateY(15px);
+  }
+
+  25% {
+    transform: translateY(0);
+  }
+
+  30% {
+    transform: translateY(15px);
+  }
+
+  50% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes filckering {
+  from {
+    transform: rotateY(0deg);
+  }
+
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+// ********************
+// 共通
+// ********************
+.inner {
+  display: block;
+  width: $breakpoint-md;
+  margin: 0 auto;
+  padding: 5px;
+
+  @include mq(md) {
+    width: auto;
+  }
+}
+
+.headline02 {
+  width: 500px;
+  max-width: 95%;
+  position: relative;
+  margin: 80px auto 40px auto;
+  text-align: center;
+
+  .text {
+    font-size: 2rem;
+    line-height: 8rem;
+    color: $text-base;
+
+    @include mq(md) {
+      font-size: 1.6rem;
+      line-height: 5rem;
+    }
+  }
+
+  .line {
+    position: absolute;
+    width: 70px;
+    height: 1px;
+    background-color: $text-base-2;
+
+    &.top {
+      top: 0;
+      left: 0;
+
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: inherit;
+        left: inherit;
+        width: 1px;
+        height: 40px;
+        background-color: inherit;
+      }
+    }
+
+    &.bottom {
+      bottom: 0;
+      right: 0;
+
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: inherit;
+        right: inherit;
+        width: 1px;
+        height: 40px;
+        background-color: inherit;
+      }
+    }
+  }
+}
+
+.headline03 {
+  margin: 20px 0;
+  border-bottom: 2px dashed $primary;
+  color: $text-base;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.largefont-paragraph {
+  font-size: 1.4rem;
+  line-height: 1.8em;
+
+  @include mq(md) {
+    font-size: 1rem;
+  }
+}
+
+.strong {
+  font-size: inherit;
+  font-weight: bold;
+  color: $accent;
+}
+
+.separator {
+  margin: 20px 0;
+  width: 100%;
+  height: 0;
+  border: none;
+  border-top: 1px dashed $text-base-3;
+  padding: 0;
+}
+
+.btn-01 {
+  display: inline-block;
+  text-decoration: none;
+  background: $primary;
+  color: $light;
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  border-radius: 50%;
+  text-align: center;
+  overflow: hidden;
+  box-shadow: 0px 0px 0px 5px $primary;
+  border: dashed 1px $light;
+  transition: .4s;
+  font-weight: bold;
+}
+
+.btn-01:hover {
+  background: $primary-dark-2;
+  box-shadow: 0px 0px 0px 5px $primary-dark-2;
+  color: $light;
+}
+
+// ********************
+// レイアウト
+// ********************
+.wrapper {
+  // @include flex();
+  // @include flexDirection(column);
+  min-height: 100vh;
+}
+
+.back-city {
+  background-image: url('./../img/city.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.section {
+  padding: 20px 0;
+
+  &--default {}
+
+  &--base {
+    background-color: $light;
+  }
+}
+
+// ********************
+// eye-catch
+// ********************
+.front-message {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+
+  &__box {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform: translateY(-50%);
+  }
+
+  &__logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    width: 600px;
+    max-width: 80%;
+    height: 35vh;
+    margin: auto;
+    background-image: url('./../img/logo@4x.png');
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  &__logo-text {
+    display: block;
+    width: 600px;
+    max-width: 80%;
+    background-color: rgba(255, 255, 255, 0.75);
+    margin: 20px auto;
+    color: $text-base;
+    text-align: center;
+  }
+
+  &__catchcopy {
+    padding: 50px;
+    background-color: rgba(255, 255, 255, 0.75);
+    color: $text-base;
+    font-size: 3rem;
+    text-align: center;
+
+    @include mq(md) {
+      font-size: 1.4rem;
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+  }
+
+  &__go-detail {
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    right: 0;
+  }
+}
+
+.go-detail-button {
+  display: block;
+  width: 140px;
+  height: 140px;
+  margin: auto;
+  border: 3px solid $text-base;
+  padding: 0;
+  border-radius: 100px;
+  background-color: $light;
+  color: $text-base;
+  text-align: center;
+  transition: $default-duration;
+
+  .go-detail-button-text {
+    display: block;
+    width: 100%;
+    font-size: 1.2rem;
+  }
+
+  .go-detail-button-icon {
+    display: block;
+    width: 100%;
+    font-size: 2.2rem;
+    animation: fluffy 3s ease infinite;
+    transition: $default-duration;
+  }
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    display: block;
+    width: 120px;
+    height: 120px;
+    margin: auto;
+    border: 3px solid transparent;
+    border-radius: 120px;
+    transition: inherit;
+  }
+
+  &:hover::after {
+    border: 3px solid $text-base;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+// ********************
+// TOPナビゲーション
+// ********************
+.top-navigation {
+  &__navi {}
+}
+
+.navi {
+  &__list {
+    @include ul-reset();
+    @include flex();
+    @include flexWrap(wrap);
+    @include justifyContent(center);
+  }
+
+  &__item {
+    margin: 10px;
+  }
+
+  &__link {
+    position: relative;
+    display: block;
+    padding: 5px 20px;
+    color: $text-base;
+    font-size: 1.6rem;
+    font-weight: bold;
+    line-height: 40px;
+    transition: $default-duration;
+
+    .line {
+      position: absolute;
+      display: block;
+      width: 0;
+      height: 4px;
+      background-color: $primary;
+      transition: inherit;
+
+      &.top {
+        top: 0;
+        left: 0;
+      }
+
+      &.bottom {
+        bottom: 0;
+        right: 0;
+      }
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 4px;
+      height: 0;
+      background-color: $primary;
+      transition: inherit;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      display: block;
+      width: 4px;
+      height: 0;
+      background-color: $primary;
+      transition: inherit;
+    }
+
+    &:hover {
+      color: $primary;
+      text-decoration: none;
+    }
+
+    &:hover::before,
+    &:hover::after {
+      height: 100%;
+    }
+
+    &:hover .top,
+    &:hover .bottom {
+      width: 100%;
+    }
+  }
+}
+
+.activity-buttons {
+  @include flex();
+  @include flexWrap(wrap);
+  @include justifyContent(center);
+
+  &__button {
+    display: block;
+    margin: 0 10px;
+  }
+}
+
+.image-gallery {
+  @include flex();
+  @include flexWrap(wrap);
+
+  &__item {
+    position: relative;
+
+    @include flexBasis(25%);
+    padding: 10px;
+
+    @include mq(md) {
+      @include flexBasis(50%);
+    }
+
+    &.anchor {
+      @include a-reset();
+      transition: $default-duration;
+
+      &:hover {
+        opacity: 0.65;
+      }
+    }
+  }
+
+  &__image {
+    display: block;
+    border-radius: 1000px;
+  }
+
+  &__caption {
+    color: $text-base;
+    text-align: center;
+  }
+}
+
+.member {
+  padding: 5px;
+
+  &__full {
+    @include flex();
+    @include justifyContent(start);
+  }
+
+  &__left {
+    padding: 10px;
+    @include flexBasis(150px);
+    // width: 50%;
+    // float: left;
+  }
+
+  &__right {
+    @include flexGrow(1);
+    // width: 50%;
+    // float: left;
+  }
+
+  @include mq(md) {
+    &__fill {
+      display: block;
+    }
+
+    &__left {
+      width: 100%;
+      // float: none;
+    }
+
+    &__right {
+      width: 100%;
+      // float: none;
+    }
+  }
+
+  &__tag {
+    display: inline-block;
+    margin: 3px 5px;
+    padding: 3px;
+    font-size: 1.2rem;
+
+    &--primary {
+      background-color: $secondary;
+      color: $light;
+    }
+
+    &--accent {
+      background-color: $accent;
+      color: $light;
+    }
+  }
+
+  &__name {
+    font-size: 2rem;
+  }
+
+  &__pic {
+    display: block;
+    width: 100%;
+  }
+
+  &__profile {
+    margin: 5px 0;
+    padding: 0 10px;
+
+    &__headline {
+      display: inline-block;
+      margin: 3px 5px;
+      padding: 3px;
+      font-size: 1.2rem;
+      background-color: $text-base;
+      color: $light;
+      font-weight: normal;
+    }
+
+    &__content {
+      display: block;
+      border-bottom: 1px dashed $text-base-2;
+      font-size: 1rem;
+    }
+  }
+
+  &__history {
+    margin: 5px 0;
+
+
+    p {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+      color: $text-base;
+    }
+  }
+}
+
+
+.modal-content {
+  max-width: none !important;
+  display: none;
+}
+
+// ********************
+// Footer
+// ********************
+.footer {
+  padding: 20px;
+  background-color: $text-base;
+}
+
+.footer-navi {
+  @include ul-reset();
+  @include flex();
+  @include flexWrap(wrap);
+  @include justifyContent(center);
+
+  &__item {
+    margin: 10px;
+  }
+
+  &__link {
+    position: relative;
+    display: block;
+    padding: 5px;
+    color: $light;
+    font-size: 0.8rem;
+
+    &:hover {
+      color: $light;
+      text-decoration: underline;
+    }
+  }
+}
+
+.copyright {
+  color: $light;
+  text-align: center;
+}
