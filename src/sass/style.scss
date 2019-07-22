@@ -493,6 +493,7 @@
   &__full {
     @include flex();
     @include justifyContent(start);
+
   }
 
   &__left {
@@ -509,7 +510,7 @@
   }
 
   @include mq(md) {
-    &__fill {
+    &__full {
       display: block;
     }
 

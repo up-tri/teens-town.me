@@ -13,7 +13,7 @@ module.exports = [{
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'js/[name].js',
+    filename: 'js/[name].[contenthash].js',
     // publicPath: '/',
   },
   devServer: {
@@ -116,7 +116,7 @@ module.exports = [{
       template: "./html/index.html"
     }),
     new MiniCssExtractPlugin({
-      filename: 'css/style.css',
+      filename: "css/style.[contenthash].css"
     }),
     new ImageminPlugin({
       test: /\.(jpe?g|png|gif|svg)$/i,
