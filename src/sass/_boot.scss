@@ -146,16 +146,19 @@ img {
   list-style-type: none;
 }
 
-.transition {
-  transition-duration: $default-duration;
+@mixin transition($speed: default) {
   transition-timing-function: ease-in-out;
 
-  &-quick {
+  @if $speed==slow {
+    transition-duration: $long-duration;
+  }
+
+  @else if $speed==quick {
     transition-duration: $short-duration;
   }
 
-  &-slow {
-    transition-duration: $long-duration;
+  @else {
+    transition-duration: $default-duration;
   }
 }
 
@@ -376,5 +379,20 @@ img {
   @else {
     -ms-flex-item-align: auto;
     align-self: auto;
+  }
+}
+
+@mixin button-reset {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    outline: none;
   }
 }

@@ -1,17 +1,31 @@
 {
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "sourceType": "module"
+  },
   "extends": [
     "eslint:recommended",
-    "plugin:prettier/recommended"
+    // "plugin:prettier/recommended"
   ],
   "rules": {
-    "prettier/prettier": [
-      "error",
-      {
-        "trailingComma": "es5",
-        "tabWidth": 2,
-        "semi": false,
-        "singleQuote": true
-      }
-    ]
+    // "prettier/prettier": [
+    //   "error", {
+    //     "tabWidth": 2
+    //   }
+    // ],
+    "comma-dangle": ["error", "never"],
+    "semi": 2,
+    "semi-spacing": ["error", {
+      "after": true,
+      "before": false
+    }],
+    "semi-style": ["error", "last"],
+    "no-extra-semi": "error",
+    "no-unexpected-multiline": "error",
+    "no-unreachable": "error",
+    "quotes": 2
   }
 }

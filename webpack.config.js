@@ -7,13 +7,15 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const AutoPrefixer = require('autoprefixer')
 
+var HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+
 module.exports = [{
   entry: {
     app: ['./src/js/app.js', './src/sass/style.scss'],
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'js/[name].[contenthash].js',
+    filename: 'js/[name].js',
     // publicPath: '/',
   },
   devServer: {
@@ -95,10 +97,10 @@ module.exports = [{
           }
         }],
       },
-      {
-        test: /\.html$/,
-        loader: "html-loader"
-      }
+      // {
+      //   test: /\.html$/,
+      //   loader: "html-loader"
+      // }
     ],
   },
   optimization: {
@@ -116,7 +118,7 @@ module.exports = [{
       template: "./html/index.html"
     }),
     new MiniCssExtractPlugin({
-      filename: "css/style.[contenthash].css"
+      filename: 'css/style.css',
     }),
     new ImageminPlugin({
       test: /\.(jpe?g|png|gif|svg)$/i,
@@ -124,5 +126,6 @@ module.exports = [{
         quality: '95-100',
       },
     }),
-  ],
-}, ]
+    new HardSourceWebpackPlugin(),
+  ]
+}]
